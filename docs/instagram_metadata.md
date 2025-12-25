@@ -4,6 +4,13 @@
 
 The Instagram Metadata Service module for boto provides a well-structured interface for interacting with Instagram metadata, including users, posts, and media content.
 
+**Important Note**: This is a conceptual implementation demonstrating the structure for Instagram metadata integration. In production environments, you would configure this to work with:
+- Facebook Graph API with Instagram endpoints
+- Instagram Basic Display API
+- Your own API Gateway or proxy service that wraps Instagram's APIs
+
+The module provides the framework and patterns; actual API endpoints and authentication would need to be configured based on your specific implementation.
+
 ## Features
 
 - **User Metadata**: Retrieve comprehensive user profile information

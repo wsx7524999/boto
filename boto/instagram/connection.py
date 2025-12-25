@@ -31,10 +31,16 @@ class InstagramConnection(AWSQueryConnection):
     
     This service provides access to Instagram metadata information
     including posts, users, and media details.
+    
+    Note: This is a conceptual implementation. In production, configure
+    the endpoint to point to your actual Instagram metadata service or
+    API gateway that wraps Instagram's API (e.g., Facebook Graph API).
     """
     
     APIVersion = '2014-01-01'
     DefaultRegionName = 'us-east-1'
+    # Note: Replace with actual service endpoint in production
+    # e.g., your API Gateway URL or proxy service
     DefaultRegionEndpoint = 'instagram.us-east-1.amazonaws.com'
     ResponseError = None
 

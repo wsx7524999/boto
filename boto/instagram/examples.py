@@ -6,7 +6,15 @@ Instagram Metadata Service Example
 This example demonstrates how to use the Instagram Metadata Service
 module in boto to interact with Instagram data.
 
-Note: This is a conceptual example showing the API structure.
+Note: This is a conceptual implementation demonstrating the structure
+for a hypothetical Instagram metadata service integration. The actual
+endpoints and API would need to be configured based on the real service
+being wrapped (e.g., Facebook Graph API, Instagram Basic Display API).
+
+For production use, ensure you have:
+1. Valid API credentials from Instagram/Facebook
+2. Proper endpoint configuration
+3. Appropriate rate limiting and error handling
 """
 
 # Example 1: Basic Connection
