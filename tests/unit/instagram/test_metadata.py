@@ -94,6 +94,41 @@ class TestInstagramUser(unittest.TestCase):
         self.assertEqual(user.full_name, 'Test User')
         self.assertEqual(user.followers_count, 1000)
         self.assertTrue(user.is_verified)
+    
+    def test_user_to_dict(self):
+        user = InstagramUser(
+            id='user123',
+            username='testuser',
+            full_name='Test User',
+            biography='Test bio',
+            followers_count=1000,
+            following_count=500,
+            is_verified=True
+        )
+        result = user.to_dict()
+        self.assertEqual(result['id'], 'user123')
+        self.assertEqual(result['full_name'], 'Test User')
+        self.assertEqual(result['biography'], 'Test bio')
+        self.assertEqual(result['followers_count'], 1000)
+        self.assertEqual(result['following_count'], 500)
+        self.assertTrue(result['is_verified'])
+    
+    def test_user_from_dict(self):
+        data = {
+            'id': 'user123',
+            'username': 'testuser',
+            'full_name': 'Test User',
+            'biography': 'Test bio',
+            'followers_count': 1000,
+            'is_verified': True
+        }
+        user = InstagramUser.from_dict(data)
+        self.assertEqual(user.id, 'user123')
+        self.assertEqual(user.username, 'testuser')
+        self.assertEqual(user.full_name, 'Test User')
+        self.assertEqual(user.biography, 'Test bio')
+        self.assertEqual(user.followers_count, 1000)
+        self.assertTrue(user.is_verified)
 
 
 class TestInstagramPost(unittest.TestCase):
@@ -127,6 +162,36 @@ class TestInstagramPost(unittest.TestCase):
         )
         self.assertEqual(post.media_type, 'CAROUSEL_ALBUM')
         self.assertEqual(len(post.children), 2)
+    
+    def test_post_to_dict(self):
+        post = InstagramPost(
+            id='post123',
+            caption='Test post',
+            media_type='IMAGE',
+            like_count=50,
+            thumbnail_url='http://example.com/thumb.jpg',
+            children=[{'id': 'child1'}]
+        )
+        result = post.to_dict()
+        self.assertEqual(result['id'], 'post123')
+        self.assertEqual(result['caption'], 'Test post')
+        self.assertEqual(result['thumbnail_url'], 'http://example.com/thumb.jpg')
+        self.assertEqual(len(result['children']), 1)
+    
+    def test_post_from_dict(self):
+        data = {
+            'id': 'post123',
+            'caption': 'Test post',
+            'media_type': 'IMAGE',
+            'like_count': 50,
+            'thumbnail_url': 'http://example.com/thumb.jpg',
+            'children': [{'id': 'child1'}]
+        }
+        post = InstagramPost.from_dict(data)
+        self.assertEqual(post.id, 'post123')
+        self.assertEqual(post.caption, 'Test post')
+        self.assertEqual(post.thumbnail_url, 'http://example.com/thumb.jpg')
+        self.assertEqual(len(post.children), 1)
 
 
 if __name__ == '__main__':

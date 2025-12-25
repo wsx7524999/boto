@@ -195,6 +195,50 @@ class InstagramUser(InstagramMetadata):
         self.profile_picture_url = profile_picture_url
         self.is_verified = is_verified
         self.is_private = is_private
+    
+    def to_dict(self):
+        """
+        Convert user metadata to dictionary format.
+        
+        :rtype: dict
+        :return: Dictionary representation of user metadata
+        """
+        data = super(InstagramUser, self).to_dict()
+        data.update({
+            'full_name': self.full_name,
+            'biography': self.biography,
+            'followers_count': self.followers_count,
+            'following_count': self.following_count,
+            'media_count': self.media_count,
+            'profile_picture_url': self.profile_picture_url,
+            'is_verified': self.is_verified,
+            'is_private': self.is_private
+        })
+        return data
+    
+    @classmethod
+    def from_dict(cls, data):
+        """
+        Create InstagramUser instance from dictionary.
+        
+        :type data: dict
+        :param data: Dictionary containing user metadata fields
+        
+        :rtype: :class:`InstagramUser`
+        :return: New InstagramUser instance
+        """
+        return cls(
+            id=data.get('id'),
+            username=data.get('username'),
+            full_name=data.get('full_name'),
+            biography=data.get('biography'),
+            followers_count=data.get('followers_count'),
+            following_count=data.get('following_count'),
+            media_count=data.get('media_count'),
+            profile_picture_url=data.get('profile_picture_url'),
+            is_verified=data.get('is_verified'),
+            is_private=data.get('is_private')
+        )
 
 
 class InstagramPost(InstagramMetadata):
@@ -265,3 +309,44 @@ class InstagramPost(InstagramMetadata):
         )
         self.thumbnail_url = thumbnail_url
         self.children = children or []
+    
+    def to_dict(self):
+        """
+        Convert post metadata to dictionary format.
+        
+        :rtype: dict
+        :return: Dictionary representation of post metadata
+        """
+        data = super(InstagramPost, self).to_dict()
+        data.update({
+            'thumbnail_url': self.thumbnail_url,
+            'children': self.children
+        })
+        return data
+    
+    @classmethod
+    def from_dict(cls, data):
+        """
+        Create InstagramPost instance from dictionary.
+        
+        :type data: dict
+        :param data: Dictionary containing post metadata fields
+        
+        :rtype: :class:`InstagramPost`
+        :return: New InstagramPost instance
+        """
+        return cls(
+            id=data.get('id'),
+            caption=data.get('caption'),
+            timestamp=data.get('timestamp'),
+            media_type=data.get('media_type'),
+            media_url=data.get('media_url'),
+            permalink=data.get('permalink'),
+            like_count=data.get('like_count'),
+            comment_count=data.get('comment_count'),
+            owner=data.get('owner', {}),
+            tags=data.get('tags', []),
+            location=data.get('location', {}),
+            thumbnail_url=data.get('thumbnail_url'),
+            children=data.get('children', [])
+        )
