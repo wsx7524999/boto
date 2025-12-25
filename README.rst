@@ -84,6 +84,10 @@ At the moment, boto supports:
 
   * Amazon Mechanical Turk
 
+* Social Media
+
+  * Instagram Metadata Service
+
 * Other
 
   * Marketplace Web Services
